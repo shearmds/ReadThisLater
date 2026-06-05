@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read This Later</title>
+    <meta name="description" content="A simple bookmarking app for people who collect more to read than they can ever get to. For iPhone, iPad, Mac, and Chromium browsers.">
+    <meta property="og:title" content="Read This Later">
+    <meta property="og:description" content="A simple bookmarking app for people who collect more to read than they can ever get to.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#ec407a">
+    <link rel="icon" href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='100' y2='100' gradientUnits='userSpaceOnUse'&gt;&lt;stop offset='0' stop-color='%23ff8a4c'/&gt;&lt;stop offset='1' stop-color='%23ec407a'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='100' height='100' rx='22' fill='url(%23g)'/&gt;&lt;path d='M32 22c0-2.2 1.8-4 4-4h28c2.2 0 4 1.8 4 4v62l-18-10-18 10z' fill='white'/&gt;&lt;/svg&gt;">
+    <style>
+        :root {
+            --brand-start: #ff8a4c;
+            --brand-end: #ec407a;
+            --text: #1a1a1a;
+            --text-muted: #5f5f67;
+            --bg: #fbfbfd;
+            --card-bg: #ffffff;
+            --rule: #e6e6ec;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text: #f2f2f5;
+                --text-muted: #a8a8b2;
+                --bg: #0c0c10;
+                --card-bg: #16161b;
+                --rule: #26262c;
+            }
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--brand-end); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+            padding: 96px 24px 88px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -30%; left: -15%;
+            width: 60%; height: 80%;
+            background: radial-gradient(closest-side, rgba(255,255,255,0.22), transparent 70%);
+            pointer-events: none;
+        }
+        .icon-wrap {
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 28px;
+            border-radius: 22px;
+            box-shadow: 0 16px 48px rgba(214, 39, 100, 0.32), 0 4px 12px rgba(0,0,0,0.16);
+            overflow: hidden;
+            position: relative;
+        }
+        .icon-wrap svg { display: block; width: 100%; height: 100%; }
+        h1 {
+            font-size: 44px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 0 0 12px;
+            color: white;
+        }
+        .tagline {
+            font-size: 20px;
+            max-width: 580px;
+            margin: 0 auto;
+            opacity: 0.96;
+        }
+        .sub {
+            font-size: 14px;
+            opacity: 0.78;
+            margin: 14px 0 0;
+            letter-spacing: 0.01em;
+        }
+
+        /* CONTENT */
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 64px 24px 32px;
+        }
+        h2 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin: 0 0 8px;
+            text-align: center;
+        }
+        .section-lede {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+            margin-bottom: 64px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--rule);
+            border-radius: 16px;
+            padding: 26px 22px 22px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-icon {
+            font-size: 30px;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 0 6px;
+        }
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0 0 20px;
+            flex: 1;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+            color: white !important;
+            font-weight: 600;
+            font-size: 13.5px;
+            padding: 9px 16px;
+            border-radius: 8px;
+            text-align: center;
+            align-self: flex-start;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+        .btn:hover { text-decoration: none; opacity: 0.94; transform: translateY(-1px); }
+        .btn-soon {
+            background: transparent;
+            color: var(--text-muted) !important;
+            border: 1px solid var(--rule);
+            font-weight: 500;
+            cursor: default;
+            pointer-events: none;
+        }
+        .btn-soon:hover { transform: none; opacity: 1; }
+
+        /* ABOUT */
+        .about {
+            background: var(--card-bg);
+            border: 1px solid var(--rule);
+            border-radius: 16px;
+            padding: 32px 28px;
+            margin-bottom: 48px;
+        }
+        .about h2 {
+            font-size: 18px;
+            text-align: left;
+            margin-bottom: 14px;
+        }
+        .about p {
+            margin: 0 0 14px;
+            color: var(--text);
+        }
+        .about p:last-child { margin: 0; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--rule);
+            padding: 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        footer a { color: var(--text-muted); }
+        footer a:hover { color: var(--brand-end); }
+        footer .dot { opacity: 0.5; margin: 0 8px; }
+
+        @media (max-width: 560px) {
+            .hero { padding: 72px 22px 64px; }
+            h1 { font-size: 34px; }
+            .tagline { font-size: 17px; }
+            .icon-wrap { width: 88px; height: 88px; border-radius: 18px; }
+            main { padding-top: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="iconbg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#ff8a4c"/>
+                        <stop offset="1" stop-color="#ec407a"/>
+                    </linearGradient>
+                </defs>
+                <rect width="100" height="100" fill="url(#iconbg)"/>
+                <path d="M32 22c0-2.2 1.8-4 4-4h28c2.2 0 4 1.8 4 4v62l-18-10-18 10z" fill="white" opacity="0.97"/>
+            </svg>
+        </div>
+        <h1>Read This Later</h1>
+        <p class="tagline">A simple way to save articles and read them when you finally have time.</p>
+        <p class="sub">iPhone &middot; iPad &middot; Mac &middot; Dia / Chrome / Edge / Arc / Brave</p>
+    </header>
+
+    <main>
+        <h2>Three ways to use it</h2>
+        <p class="section-lede">Save from anywhere; everything syncs through your own iCloud account.</p>
+
+        <div class="cards">
+            <article class="card">
+                <div class="card-icon">📱</div>
+                <h3 class="card-title">iPhone &amp; iPad</h3>
+                <p class="card-desc">The main app &mdash; your full saved list, with search, filters, the iOS share sheet, and Siri/Shortcuts support.</p>
+                <a class="btn btn-soon" aria-disabled="true">Coming to the App Store</a>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">💻</div>
+                <h3 class="card-title">Mac menu bar</h3>
+                <p class="card-desc">A quiet bookmark icon that lives in your Mac's menu bar &mdash; click it for your list. A Safari extension is bundled in.</p>
+                <a class="btn" href="https://github.com/shearmds/readlater-privacy/raw/main/ReadLater.zip">Download for Mac</a>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🌐</div>
+                <h3 class="card-title">Browser extension</h3>
+                <p class="card-desc">Save the current page from your browser's toolbar. Works in Dia, Chrome, Edge, Arc, Brave, and any other Chromium-based browser.</p>
+                <a class="btn" href="https://chromewebstore.google.com/detail/read-later-for-dia/ancfbdfgbbmgjoganlinijhhiolbpdlk">Get it on Chrome Web Store</a>
+            </article>
+        </div>
+
+        <section class="about">
+            <h2>A note from the maker</h2>
+            <p>
+                I'm Michael Shear. By day, I'm the Chief U.K. Correspondent for The New York Times,
+                based in London. Read This Later isn't part of that day job &mdash; it's a side project
+                I built because I was tired of forgetting which articles I meant to read later.
+            </p>
+            <p>
+                This is my first app. I'm not a professional developer; I built it with the help of
+                Claude, Anthropic's AI assistant. It works for me on my devices, and I hope it works
+                for you on yours. If you spot a bug or have a small idea, my email is at the bottom
+                of the page.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://shearmds.github.io/readlater-privacy/">Privacy</a>
+        <span class="dot">·</span>
+        <a href="mailto:shearm@mac.com">Contact</a>
+        <span class="dot">·</span>
+        <span>© 2026 Michael Shear</span>
+    </footer>
+</body>
+</html>
