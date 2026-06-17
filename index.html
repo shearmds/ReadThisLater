@@ -199,10 +199,43 @@
             .tagline { font-size: 17px; }
             .icon-wrap { width: 88px; height: 88px; border-radius: 18px; }
             main { padding-top: 48px; }
+            .site-nav { padding: 18px 22px; }
         }
+
+        /* NAV */
+        .site-nav {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-nav .wordmark {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .site-nav .wordmark:hover { text-decoration: none; }
+        .site-nav .links { display: flex; gap: 22px; }
+        .site-nav .links a {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .site-nav .links a:hover { color: var(--text); text-decoration: none; }
     </style>
 </head>
 <body>
+    <nav class="site-nav">
+        <a class="wordmark" href="https://shearmds.github.io/mike-coding/">Michael Shear</a>
+        <div class="links">
+            <a href="https://shearmds.github.io/mike-coding/">Home</a>
+            <a href="https://shearmds.github.io/mike-coding/about.html">About</a>
+        </div>
+    </nav>
+
     <header class="hero">
         <div class="icon-wrap" aria-hidden="true">
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -258,7 +291,13 @@
     </main>
 
     <footer>
+        <a href="https://shearmds.github.io/mike-coding/">Home</a>
+        <span class="dot">·</span>
+        <a href="https://shearmds.github.io/mike-coding/about.html">About</a>
+        <span class="dot">·</span>
         <a href="https://shearmds.github.io/readlater-privacy/">Privacy</a>
+        <span class="dot">·</span>
+        <a href="https://github.com/shearmds">GitHub</a>
         <span class="dot">·</span>
         <a href="mailto:shearm@mac.com">Contact</a>
         <span class="dot">·</span>
