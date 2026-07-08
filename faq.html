@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — Research Sync</title>
+    <meta name="description" content="How to set up sync across your devices, use folders, read/unread, offline reading, and more in Research Sync.">
+    <meta property="og:title" content="FAQ — Research Sync">
+    <meta property="og:description" content="How to set up sync across your devices and get the most out of Research Sync.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#1665c0">
+    <link rel="icon" type="image/png" href="icon-32.png">
+    <link rel="apple-touch-icon" href="icon-180.png">
+    <style>
+        :root {
+            --brand-start: #26c6da;
+            --brand-end: #1665c0;
+            --text: #1a1a1a;
+            --text-muted: #5f5f67;
+            --bg: #fbfbfd;
+            --card-bg: #ffffff;
+            --rule: #e6e6ec;
+            --accent-wash: rgba(22, 101, 192, 0.08);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text: #f2f2f5;
+                --text-muted: #a8a8b2;
+                --bg: #0c0c10;
+                --card-bg: #16161b;
+                --rule: #26262c;
+                --accent-wash: rgba(38, 198, 218, 0.10);
+            }
+        }
+        :root[data-theme="dark"] {
+            --text: #f2f2f5;
+            --text-muted: #a8a8b2;
+            --bg: #0c0c10;
+            --card-bg: #16161b;
+            --rule: #26262c;
+            --accent-wash: rgba(38, 198, 218, 0.10);
+        }
+        :root[data-theme="light"] {
+            --text: #1a1a1a;
+            --text-muted: #5f5f67;
+            --bg: #fbfbfd;
+            --card-bg: #ffffff;
+            --rule: #e6e6ec;
+            --accent-wash: rgba(22, 101, 192, 0.08);
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--brand-end); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (prefers-color-scheme: dark) { a { color: #6fd0e0; } }
+        :root[data-theme="dark"] a { color: #6fd0e0; }
+        :root[data-theme="light"] a { color: var(--brand-end); }
+
+        /* NAV */
+        .site-nav {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-nav .wordmark { font-weight: 700; font-size: 15px; color: var(--text); letter-spacing: -0.01em; }
+        .site-nav .wordmark:hover { text-decoration: none; }
+        .site-nav .links { display: flex; gap: 22px; }
+        .site-nav .links a { color: var(--text-muted); font-size: 14px; font-weight: 500; }
+        .site-nav .links a:hover { color: var(--text); text-decoration: none; }
+        .site-nav .links a.current { color: var(--brand-end); }
+        @media (prefers-color-scheme: dark) { .site-nav .links a.current { color: #6fd0e0; } }
+        :root[data-theme="dark"] .site-nav .links a.current { color: #6fd0e0; }
+        :root[data-theme="light"] .site-nav .links a.current { color: var(--brand-end); }
+
+        /* HEADER (lighter than the homepage hero — this is a reference page, not a pitch) */
+        header.page-head {
+            background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+            padding: 52px 24px 44px;
+            text-align: center;
+            color: white;
+        }
+        header.page-head h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px; color: white; }
+        header.page-head p { font-size: 16px; max-width: 480px; margin: 0 auto; opacity: 0.94; }
+
+        main { max-width: 760px; margin: 0 auto; padding: 0 24px 40px; }
+
+        /* Jump nav */
+        .jump-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: -22px 0 48px;
+            position: relative;
+        }
+        .jump-nav a {
+            background: var(--card-bg);
+            border: 1px solid var(--rule);
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 999px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .jump-nav a:hover { border-color: var(--brand-end); text-decoration: none; }
+
+        /* Sections */
+        .faq-section { margin-bottom: 44px; scroll-margin-top: 24px; }
+        .faq-section h2 {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 0 0 4px;
+        }
+        .faq-section .section-note {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin: 0 0 20px;
+        }
+
+        /* Q&A accordion — native <details>, no JS */
+        .qa { border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: var(--card-bg); }
+        .qa + .qa { margin-top: 10px; }
+        .qa summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 16px 44px 16px 18px;
+            font-weight: 600;
+            font-size: 15px;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .qa summary::-webkit-details-marker { display: none; }
+        .qa summary::after {
+            content: "+";
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-muted);
+            transition: transform 0.15s ease;
+        }
+        .qa[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+        .qa[open] summary { border-bottom: 1px solid var(--rule); }
+        .qa .qa-body { padding: 4px 18px 18px; color: var(--text); font-size: 14.5px; }
+        .qa .qa-body p { margin: 0 0 12px; }
+        .qa .qa-body p:last-child { margin-bottom: 0; }
+        .qa .qa-body ol, .qa .qa-body ul { margin: 0 0 12px; padding-left: 22px; }
+        .qa .qa-body li { margin-bottom: 6px; }
+        .qa .qa-body li:last-child { margin-bottom: 0; }
+        .qa .qa-body code {
+            background: var(--accent-wash);
+            border-radius: 4px;
+            padding: 1px 5px;
+            font-size: 0.92em;
+        }
+
+        /* Callouts */
+        .callout {
+            background: var(--accent-wash);
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 13.5px;
+            color: var(--text);
+            margin: 0 0 12px;
+        }
+        .callout strong { color: var(--brand-end); }
+        @media (prefers-color-scheme: dark) { .callout strong { color: #6fd0e0; } }
+        :root[data-theme="dark"] .callout strong { color: #6fd0e0; }
+        :root[data-theme="light"] .callout strong { color: var(--brand-end); }
+
+        /* Platform badge row inside step lists */
+        .platform-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--brand-end);
+            background: var(--accent-wash);
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-right: 6px;
+        }
+        @media (prefers-color-scheme: dark) { .platform-tag { color: #6fd0e0; } }
+        :root[data-theme="dark"] .platform-tag { color: #6fd0e0; }
+        :root[data-theme="light"] .platform-tag { color: var(--brand-end); }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--rule);
+            padding: 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        footer a { color: var(--text-muted); }
+        footer a:hover { color: var(--brand-end); }
+        @media (prefers-color-scheme: dark) { footer a:hover { color: #6fd0e0; } }
+        footer .dot { opacity: 0.5; margin: 0 8px; }
+
+        @media (max-width: 560px) {
+            header.page-head { padding: 40px 22px 36px; }
+            header.page-head h1 { font-size: 26px; }
+            .jump-nav { margin-top: -16px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav">
+        <a class="wordmark" href="https://shearmds.github.io/mike-coding/">Michael Shear</a>
+        <div class="links">
+            <a href="index.html">Research Sync</a>
+            <a href="faq.html" class="current">FAQ</a>
+        </div>
+    </nav>
+
+    <header class="page-head">
+        <h1>Frequently Asked Questions</h1>
+        <p>Setting up sync across your devices, and getting the most out of Research Sync.</p>
+    </header>
+
+    <main>
+        <nav class="jump-nav" aria-label="Jump to section">
+            <a href="#syncing">Syncing your devices</a>
+            <a href="#basics">The basics</a>
+            <a href="#folders">Folders</a>
+            <a href="#more">Everything else</a>
+        </nav>
+
+        <section class="faq-section" id="syncing">
+            <h2>Syncing your devices</h2>
+            <p class="section-note">Research Sync has no accounts and no sign-in. A private sync key is what links your devices together — this is the one setup step almost everyone needs.</p>
+
+            <div class="qa">
+                <details open>
+                    <summary>How do I get my devices to share one list?</summary>
+                    <div class="qa-body">
+                        <p>Every install — the app, each browser extension — generates its own random sync key the first time you open it, and starts out as its own private, unconnected list. To link two devices, you copy the key from one and paste it into the other:</p>
+                        <ol>
+                            <li>On your <strong>first</strong> device, open Settings (the gear icon) and find <strong>Sync Key</strong>. Tap <strong>Copy Key</strong>.</li>
+                            <li>On your <strong>next</strong> device, open its Settings, paste the key into the <strong>Sync key</strong> field, and tap <strong>Save key</strong>.</li>
+                            <li>Repeat for every additional device or browser you want on the same list.</li>
+                        </ol>
+                        <p>Once two clients share a key, anything you save, read, delete, or sort on one shows up on the others within a minute or so.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>Where exactly do I find the sync key screen?</summary>
+                    <div class="qa-body">
+                        <p><span class="platform-tag">iPhone / iPad</span> Tap the gear icon in the top-right corner of the main list.</p>
+                        <p><span class="platform-tag">Browser extension</span> Click the extension icon, then the gear icon in its popup header.</p>
+                        <p><span class="platform-tag">Safari (Mac)</span> Same as above — open the extension popup, then Settings.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>I already had items saved on the second device — what happens to them?</summary>
+                    <div class="qa-body">
+                        <p>They're not lost — pasting a key merges lists rather than replacing one with the other. The first sync after you paste a new key uploads whatever was already on that device and combines it with the key's existing list, so you end up with everything from both.</p>
+                        <div class="callout"><strong>Tip:</strong> if you're setting up a brand-new device and don't want any pre-existing items mixed in, paste the key <em>before</em> saving anything on it.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>Is it safe to share my sync key? Can I recover it if I lose it?</summary>
+                    <div class="qa-body">
+                        <p>Treat your sync key like a password — anyone who has it can read and edit your saved list. It's fine to store it in a password manager or paste it between your own devices; just don't post it publicly.</p>
+                        <p>There are no accounts, so there's no "forgot my key" recovery. If you lose every device that has it, that list is unreachable. Keeping a copy somewhere safe is worth doing once, right after you generate it.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="faq-section" id="basics">
+            <h2>The basics</h2>
+            <p class="section-note">Saving, filtering, and everyday reading.</p>
+
+            <div class="qa">
+                <details>
+                    <summary>How do I save a page?</summary>
+                    <div class="qa-body">
+                        <p><span class="platform-tag">Browser</span> Click <strong>+ Save</strong> in the extension popup, or use the keyboard shortcut (set one under the extension's shortcut settings).</p>
+                        <p><span class="platform-tag">iPhone / iPad</span> Use the Share Sheet from Safari or any app, or ask Siri / use the Shortcuts app.</p>
+                        <p><span class="platform-tag">Safari (Mac)</span> Click the extension's toolbar button on the page you want to save.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>What's the difference between All, Unread, and Read?</summary>
+                    <div class="qa-body">
+                        <p><strong>Unread</strong> is the default view — it's your reading queue, and it's what you'll see most often. <strong>Read</strong> shows things you've already gotten to, in case you want to find something again. <strong>All</strong> shows everything except items you've deleted.</p>
+                        <p>Opening a saved link marks it read automatically. You can also toggle read/unread manually without opening it — swipe on the item, or use the checkmark button.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>Can I add my own notes to a saved link?</summary>
+                    <div class="qa-body">
+                        <p>Yes — tap the note icon on any item to jot down why you saved it. Notes sync along with everything else, so they show up on every linked device.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>How does offline reading work?</summary>
+                    <div class="qa-body">
+                        <p>Tap the download icon on a saved item to capture a readable, offline copy. Once it's ready (the icon turns into an open book), you can read the full article with no connection — even on a different device than the one that saved it, since the copy syncs too.</p>
+                        <p>Article bodies are end-to-end encrypted before they ever leave your device, so only your synced devices can read them — not the server in between.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>How do I search my list?</summary>
+                    <div class="qa-body">
+                        <p>Use the search box at the top. It matches against both the title and the URL, and it always shows a flat, ungrouped list of every match — so if you have folders on, search temporarily sets them aside rather than making you dig through collapsed sections.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>What happens when I delete something?</summary>
+                    <div class="qa-body">
+                        <p>It's removed from every device on your sync key, along with its offline copy if it had one. Deletion syncs like everything else — there's currently no "recently deleted" recovery, so it's final.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="faq-section" id="folders">
+            <h2>Folders</h2>
+            <p class="section-note">Saved links get sorted into folders automatically — no filing required.</p>
+
+            <div class="qa">
+                <details open>
+                    <summary>How does automatic sorting work?</summary>
+                    <div class="qa-body">
+                        <p>Shortly after you save something, it's assigned a folder based on its title and web address — things like "Politics," "Recipes," or "Tech" get grouped together on their own. You don't create folders by hand; they're generated as your list needs them, and reused for similar items.</p>
+                        <div class="callout"><strong>Privacy:</strong> sorting only ever looks at the title and URL. It never sees the article's actual content, which stays end-to-end encrypted the same way offline copies do.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>How do I turn folders on?</summary>
+                    <div class="qa-body">
+                        <p>Tap the folder icon next to Settings to switch between a flat list and folders. This is a per-device setting — turning it on in the iPhone app doesn't change what you see in the browser extension, and vice versa. Use whichever view suits each device.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>Can I collapse folders I don't need to see right now?</summary>
+                    <div class="qa-body">
+                        <p>Yes — tap a folder's name to collapse or expand it. The number on the right tells you how many items are inside without needing to open it, and your collapsed/expanded choices are remembered the next time you open the app.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>What does the little "Sorting…" spinner mean?</summary>
+                    <div class="qa-body">
+                        <p>It shows up right after you save something, while a folder is still being figured out — this usually takes a few seconds. If you keep the app or extension open, it resolves on its own; you don't need to refresh or do anything.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>What's the small dot on a folder header for?</summary>
+                    <div class="qa-body">
+                        <p>If a folder is collapsed and something new just got sorted into it, a small dot appears on that folder's header — so you know to check it without opening every section to look for what's new. It clears once you expand that folder.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="faq-section" id="more">
+            <h2>Everything else</h2>
+
+            <div class="qa">
+                <details>
+                    <summary>Can I get my data out?</summary>
+                    <div class="qa-body">
+                        <p>Yes — Settings has <strong>Export as JSON</strong> and <strong>Export as CSV</strong>, both including your notes and folders. There's no lock-in.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>Which browsers does the extension work in?</summary>
+                    <div class="qa-body">
+                        <p>The Chrome Web Store extension works in any Chromium-based browser — Dia, Chrome, Edge, Arc, and Brave all use the same install. Safari uses a separate native extension (downloaded as a Mac app) because Safari doesn't support the Chrome Web Store version.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>Can I change the color theme?</summary>
+                    <div class="qa-body">
+                        <p>Yes — pick from the color swatches in Settings. Theme choice is per-device, like folders, so each install can look different if you'd like.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="qa">
+                <details>
+                    <summary>Something's not working — where do I get help?</summary>
+                    <div class="qa-body">
+                        <p>Reach out at <a href="mailto:shearm@mac.com">shearm@mac.com</a>, or check the <a href="https://shearmds.github.io/readlater-privacy/">privacy policy</a> if your question's about data handling.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="index.html">Research Sync</a>
+        <span class="dot">·</span>
+        <a href="faq.html">FAQ</a>
+        <span class="dot">·</span>
+        <a href="https://shearmds.github.io/mike-coding/">Home</a>
+        <span class="dot">·</span>
+        <a href="https://shearmds.github.io/mike-coding/about.html">About</a>
+        <span class="dot">·</span>
+        <a href="https://shearmds.github.io/readlater-privacy/">Privacy</a>
+        <span class="dot">·</span>
+        <a href="https://github.com/shearmds">GitHub</a>
+        <span class="dot">·</span>
+        <a href="mailto:shearm@mac.com">Contact</a>
+        <span class="dot">·</span>
+        <span>© 2026 Michael Shear</span>
+    </footer>
+</body>
+</html>
