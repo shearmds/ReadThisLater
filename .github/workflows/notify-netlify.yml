@@ -1,0 +1,12 @@
+name: Notify Netlify
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  trigger-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger mikeshear.com rebuild
+        run: curl -sf -X POST "${{ secrets.NETLIFY_BUILD_HOOK }}"
