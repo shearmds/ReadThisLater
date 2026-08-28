@@ -8,13 +8,16 @@
     <meta property="og:title" content="Clipfile">
     <meta property="og:description" content="An effective but simple tool for speeding up research for journalists, academics and others by bookmarking and annotating web links.">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#1665c0">
+    <meta name="theme-color" content="#17120E">
     <link rel="icon" type="image/png" href="icon-32.png">
     <link rel="apple-touch-icon" href="icon-180.png">
     <style>
         :root {
-            --brand-start: #26c6da;
-            --brand-end: #1665c0;
+            --brand-start: #3A322A;
+            --brand-end: #17120E;
+            --accent: #8F3A2E;
+            --accent-wash: rgba(143, 58, 46, 0.08);
+            --accent-border: rgba(143, 58, 46, 0.22);
             --text: #1a1a1a;
             --text-muted: #5f5f67;
             --bg: #fbfbfd;
@@ -28,6 +31,9 @@
                 --bg: #0c0c10;
                 --card-bg: #16161b;
                 --rule: #26262c;
+                --accent: #E08B78;
+                --accent-wash: rgba(224, 139, 120, 0.12);
+                --accent-border: rgba(224, 139, 120, 0.28);
             }
         }
         * { box-sizing: border-box; }
@@ -40,7 +46,7 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        a { color: var(--brand-end); text-decoration: none; }
+        a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
         /* HERO */
@@ -65,7 +71,7 @@
             height: 104px;
             margin: 0 auto 28px;
             border-radius: 22px;
-            box-shadow: 0 16px 48px rgba(22, 101, 192, 0.32), 0 4px 12px rgba(0,0,0,0.16);
+            box-shadow: 0 16px 48px rgba(23, 18, 14, 0.40), 0 4px 12px rgba(0,0,0,0.16);
             overflow: hidden;
             position: relative;
         }
@@ -173,9 +179,9 @@
             font-weight: 600;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            color: var(--brand-end);
-            background: rgba(22, 101, 192, 0.08);
-            border: 1px solid rgba(22, 101, 192, 0.22);
+            color: var(--accent);
+            background: var(--accent-wash);
+            border: 1px solid var(--accent-border);
             padding: 3px 9px;
             border-radius: 999px;
             margin-bottom: 12px;
@@ -231,7 +237,7 @@
             font-size: 13px;
         }
         footer a { color: var(--text-muted); }
-        footer a:hover { color: var(--brand-end); }
+        footer a:hover { color: var(--accent); }
         footer .dot { opacity: 0.5; margin: 0 8px; }
 
         @media (max-width: 560px) {

@@ -8,19 +8,21 @@
     <meta property="og:title" content="FAQ — Clipfile">
     <meta property="og:description" content="How to set up sync across your devices and get the most out of Clipfile.">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#1665c0">
+    <meta name="theme-color" content="#17120E">
     <link rel="icon" type="image/png" href="icon-32.png">
     <link rel="apple-touch-icon" href="icon-180.png">
     <style>
         :root {
-            --brand-start: #26c6da;
-            --brand-end: #1665c0;
+            --brand-start: #3A322A;
+            --brand-end: #17120E;
+            --accent: #8F3A2E;
+            --accent-wash: rgba(143, 58, 46, 0.08);
+            --accent-border: rgba(143, 58, 46, 0.22);
             --text: #1a1a1a;
             --text-muted: #5f5f67;
             --bg: #fbfbfd;
             --card-bg: #ffffff;
             --rule: #e6e6ec;
-            --accent-wash: rgba(22, 101, 192, 0.08);
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -29,7 +31,9 @@
                 --bg: #0c0c10;
                 --card-bg: #16161b;
                 --rule: #26262c;
-                --accent-wash: rgba(38, 198, 218, 0.10);
+                --accent: #E08B78;
+                --accent-wash: rgba(224, 139, 120, 0.12);
+                --accent-border: rgba(224, 139, 120, 0.28);
             }
         }
         :root[data-theme="dark"] {
@@ -38,7 +42,9 @@
             --bg: #0c0c10;
             --card-bg: #16161b;
             --rule: #26262c;
-            --accent-wash: rgba(38, 198, 218, 0.10);
+            --accent: #E08B78;
+            --accent-wash: rgba(224, 139, 120, 0.12);
+            --accent-border: rgba(224, 139, 120, 0.28);
         }
         :root[data-theme="light"] {
             --text: #1a1a1a;
@@ -46,7 +52,9 @@
             --bg: #fbfbfd;
             --card-bg: #ffffff;
             --rule: #e6e6ec;
-            --accent-wash: rgba(22, 101, 192, 0.08);
+            --accent: #8F3A2E;
+            --accent-wash: rgba(143, 58, 46, 0.08);
+            --accent-border: rgba(143, 58, 46, 0.22);
         }
         * { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; }
@@ -58,11 +66,11 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        a { color: var(--brand-end); text-decoration: none; }
+        a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
-        @media (prefers-color-scheme: dark) { a { color: #6fd0e0; } }
-        :root[data-theme="dark"] a { color: #6fd0e0; }
-        :root[data-theme="light"] a { color: var(--brand-end); }
+        @media (prefers-color-scheme: dark) { a { color: var(--accent); } }
+        :root[data-theme="dark"] a { color: var(--accent); }
+        :root[data-theme="light"] a { color: var(--accent); }
 
         /* NAV */
         .site-nav {
@@ -78,10 +86,10 @@
         .site-nav .links { display: flex; gap: 22px; }
         .site-nav .links a { color: var(--text-muted); font-size: 14px; font-weight: 500; }
         .site-nav .links a:hover { color: var(--text); text-decoration: none; }
-        .site-nav .links a.current { color: var(--brand-end); }
-        @media (prefers-color-scheme: dark) { .site-nav .links a.current { color: #6fd0e0; } }
-        :root[data-theme="dark"] .site-nav .links a.current { color: #6fd0e0; }
-        :root[data-theme="light"] .site-nav .links a.current { color: var(--brand-end); }
+        .site-nav .links a.current { color: var(--accent); }
+        @media (prefers-color-scheme: dark) { .site-nav .links a.current { color: var(--accent); } }
+        :root[data-theme="dark"] .site-nav .links a.current { color: var(--accent); }
+        :root[data-theme="light"] .site-nav .links a.current { color: var(--accent); }
 
         /* HEADER (lighter than the homepage hero — this is a reference page, not a pitch) */
         header.page-head {
@@ -114,7 +122,7 @@
             border-radius: 999px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         }
-        .jump-nav a:hover { border-color: var(--brand-end); text-decoration: none; }
+        .jump-nav a:hover { border-color: var(--accent); text-decoration: none; }
 
         /* Sections */
         .faq-section { margin-bottom: 44px; scroll-margin-top: 24px; }
@@ -179,10 +187,10 @@
             color: var(--text);
             margin: 0 0 12px;
         }
-        .callout strong { color: var(--brand-end); }
-        @media (prefers-color-scheme: dark) { .callout strong { color: #6fd0e0; } }
-        :root[data-theme="dark"] .callout strong { color: #6fd0e0; }
-        :root[data-theme="light"] .callout strong { color: var(--brand-end); }
+        .callout strong { color: var(--accent); }
+        @media (prefers-color-scheme: dark) { .callout strong { color: var(--accent); } }
+        :root[data-theme="dark"] .callout strong { color: var(--accent); }
+        :root[data-theme="light"] .callout strong { color: var(--accent); }
 
         /* Platform badge row inside step lists */
         .platform-tag {
@@ -191,15 +199,15 @@
             font-weight: 700;
             letter-spacing: 0.02em;
             text-transform: uppercase;
-            color: var(--brand-end);
+            color: var(--accent);
             background: var(--accent-wash);
             padding: 2px 8px;
             border-radius: 999px;
             margin-right: 6px;
         }
-        @media (prefers-color-scheme: dark) { .platform-tag { color: #6fd0e0; } }
-        :root[data-theme="dark"] .platform-tag { color: #6fd0e0; }
-        :root[data-theme="light"] .platform-tag { color: var(--brand-end); }
+        @media (prefers-color-scheme: dark) { .platform-tag { color: var(--accent); } }
+        :root[data-theme="dark"] .platform-tag { color: var(--accent); }
+        :root[data-theme="light"] .platform-tag { color: var(--accent); }
 
         /* FOOTER */
         footer {
@@ -210,8 +218,8 @@
             font-size: 13px;
         }
         footer a { color: var(--text-muted); }
-        footer a:hover { color: var(--brand-end); }
-        @media (prefers-color-scheme: dark) { footer a:hover { color: #6fd0e0; } }
+        footer a:hover { color: var(--accent); }
+        @media (prefers-color-scheme: dark) { footer a:hover { color: var(--accent); } }
         footer .dot { opacity: 0.5; margin: 0 8px; }
 
         @media (max-width: 560px) {
