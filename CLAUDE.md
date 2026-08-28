@@ -1,6 +1,6 @@
 # ReadThisLater (marketing site)
 
-Static marketing page for the Research Sync app — `index.html`, `faq.html`, icons. No build
+Static marketing page for the Clipfile app — `index.html`, `faq.html`, icons. No build
 step, no framework. Repo: `github.com/shearmds/ReadThisLater`.
 
 **This is the website, not the app.** The app family it advertises:
