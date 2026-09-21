@@ -341,7 +341,7 @@
                     <summary>How does offline reading work?</summary>
                     <div class="qa-body">
                         <p>Tap the download icon on a saved item to capture a readable, offline copy. Once it's ready (the icon turns into an open book), you can read the full article with no connection — even on a different device than the one that saved it, since the copy syncs too.</p>
-                        <p>Article bodies are end-to-end encrypted before they ever leave your device, so only your synced devices can read them — not the server in between.</p>
+                        <p>Article bodies are encrypted on your device before upload, so the relay stores only ciphertext. The key is derived from your sync token, which the relay also receives — so this is encryption at rest with a key the relay handles, not end-to-end encryption. It never decrypts anything and logs nothing.</p>
                     </div>
                 </details>
             </div>
@@ -374,7 +374,7 @@
                     <summary>How does automatic sorting work?</summary>
                     <div class="qa-body">
                         <p>Shortly after you save something, it's assigned a folder based on its title and web address — things like "Politics," "Recipes," or "Tech" get grouped together on their own. You don't create folders by hand; they're generated as your list needs them, and reused for similar items.</p>
-                        <div class="callout"><strong>Privacy:</strong> sorting only ever looks at the title and URL. It never sees the article's actual content, which stays end-to-end encrypted the same way offline copies do.</div>
+                        <div class="callout"><strong>Privacy:</strong> sorting only ever looks at the title and URL. It never sees the article's actual content, which stays encrypted the same way offline copies are.</div>
                     </div>
                 </details>
             </div>
