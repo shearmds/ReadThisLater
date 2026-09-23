@@ -259,7 +259,8 @@
                 <details open>
                     <summary>How do I get my devices to share one list?</summary>
                     <div class="qa-body">
-                        <p>Every install — the app, each browser extension — generates its own random sync key the first time you open it, and starts out as its own private, unconnected list. To link two devices, you copy the key from one and paste it into the other:</p>
+                        <p>If you use iCloud Keychain, you usually don't have to do anything: the iPhone, iPad and Mac apps keep the sync key in iCloud Keychain, so a new Apple device picks it up by itself shortly after you install. Where that can't reach — iCloud Keychain switched off, or a device on a different Apple Account — open Settings on a device that already has your list and choose <strong>Show a Pairing Code</strong>, then enter that code in Settings on the new device. A code is 8 characters, works once, and expires after five minutes.</p>
+                        <p>You can also link devices by hand. Without either of those, each install starts out with its own random sync key and its own private, unconnected list. To link two devices, you copy the key from one and paste it into the other:</p>
                         <ol>
                             <li>On your <strong>first</strong> device, open Settings (the gear icon) and find <strong>Sync Key</strong>. Tap <strong>Copy Key</strong>.</li>
                             <li>On your <strong>next</strong> device, open its Settings, paste the key into the <strong>Sync key</strong> field, and tap <strong>Save key</strong>.</li>
@@ -275,8 +276,8 @@
                     <summary>Where exactly do I find the sync key screen?</summary>
                     <div class="qa-body">
                         <p><span class="platform-tag">iPhone / iPad</span> Tap the gear icon in the top-right corner of the main list.</p>
-                        <p><span class="platform-tag">Browser extension</span> Click the extension icon, then the gear icon in its popup header.</p>
-                        <p><span class="platform-tag">Safari (Mac)</span> Same as above — open the extension popup, then Settings.</p>
+                        <p><span class="platform-tag">Mac</span> Click the Clipfile icon in the menu bar and choose <strong>Settings…</strong>.</p>
+                        <p><span class="platform-tag">Browser extension (being retired)</span> Click the extension icon, then the gear icon in its popup header.</p>
                     </div>
                 </details>
             </div>
@@ -296,7 +297,7 @@
                     <summary>Is it safe to share my sync key? Can I recover it if I lose it?</summary>
                     <div class="qa-body">
                         <p>Treat your sync key like a password — anyone who has it can read and edit your saved list. It's fine to store it in a password manager or paste it between your own devices; just don't post it publicly.</p>
-                        <p>There are no accounts, so there's no "forgot my key" recovery. If you lose every device that has it, that list is unreachable. Keeping a copy somewhere safe is worth doing once, right after you generate it.</p>
+                        <p>There are no accounts, so there's no "forgot my key" recovery. If you lose every device that has it — and it isn't in your iCloud Keychain — that list is unreachable. Keeping a copy somewhere safe is worth doing once, right after you generate it.</p>
                     </div>
                 </details>
             </div>
@@ -310,9 +311,9 @@
                 <details>
                     <summary>How do I save a page?</summary>
                     <div class="qa-body">
-                        <p><span class="platform-tag">Browser</span> Click <strong>+ Save</strong> in the extension popup, or use the keyboard shortcut (set one under the extension's shortcut settings).</p>
+                        <p><span class="platform-tag">Mac</span> With the page open in Safari, Chrome, Helium or Brave, press <strong>&#8997;&#8984;S</strong>, or choose <strong>Save Current Tab</strong> from the Clipfile menu-bar icon. Clipfile saves the link and the article text from the tab you're looking at. &#8997;&#8984;L opens your list; both shortcuts can be changed in Settings.</p>
                         <p><span class="platform-tag">iPhone / iPad</span> Use the Share Sheet from Safari or any app, or ask Siri / use the Shortcuts app.</p>
-                        <p><span class="platform-tag">Safari (Mac)</span> Click the extension's toolbar button on the page you want to save.</p>
+                        <p><span class="platform-tag">Browser extension (being retired)</span> Click <strong>+ Save</strong> in the extension popup, or use the keyboard shortcut you set for it.</p>
                     </div>
                 </details>
             </div>
@@ -383,7 +384,7 @@
                 <details>
                     <summary>How do I turn folders on?</summary>
                     <div class="qa-body">
-                        <p>Tap the folder icon next to Settings to switch between a flat list and folders. This is a per-device setting — turning it on in the iPhone app doesn't change what you see in the browser extension, and vice versa. Use whichever view suits each device.</p>
+                        <p>Tap the folder icon next to Settings to switch between a flat list and folders. This is a per-device setting — turning it on in the iPhone app doesn't change what you see on your Mac, and vice versa. Use whichever view suits each device.</p>
                     </div>
                 </details>
             </div>
@@ -430,9 +431,11 @@
 
             <div class="qa">
                 <details>
-                    <summary>Which browsers does the extension work in?</summary>
+                    <summary>Which browsers can I save from on a Mac?</summary>
                     <div class="qa-body">
-                        <p>The Chrome Web Store extension works in any Chromium-based browser — Dia, Chrome, Edge, Arc, and Brave all use the same install. Safari uses a separate native extension (downloaded as a Mac app) because Safari doesn't support the Chrome Web Store version.</p>
+                        <p>Clipfile for Mac captures from <strong>Safari, Chrome, Helium and Brave</strong>. It asks the browser for the page over Apple Events, so macOS shows one Automation permission prompt per browser the first time, and no browser extension is needed. Other Chromium browsers that support AppleScript may work too.</p>
+                        <p><strong>Dia, Arc and Firefox can't be captured.</strong> Dia and Arc don't offer the scripting Clipfile needs, and Firefox has no AppleScript support at all. The Mac app is a notarised download from outside the Mac App Store, because the Mac App Store doesn't allow the browser access it depends on.</p>
+                        <p>The older browser extensions are being retired. The Chrome Web Store one still installs for now, but on a Mac, Clipfile for Mac is the way to save.</p>
                     </div>
                 </details>
             </div>
