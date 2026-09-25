@@ -1,3 +1,15 @@
+# ReadThisLater — now only a redirect (since 2026-09-25)
+
+**Clipfile's site is `~/Developer/mikeshear-site/coding/clipfile/`** (live at
+mikeshear.com/coding/clipfile/). This repo now holds only redirect pages. It stays **public
+with Pages on** because `shearmds.github.io/ReadThisLater/` is the marketing URL registered in
+App Store Connect. Don't put content back here, and don't delete or rename the repo. The
+notify-netlify workflow is gone: mikeshear-site no longer clones this repo.
+
+The notes below describe the site as it was, and are history.
+
+---
+
 # ReadThisLater (marketing site)
 
 Static marketing page for the Clipfile app — `index.html`, `faq.html`, icons. No build
